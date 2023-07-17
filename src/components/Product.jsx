@@ -3,10 +3,12 @@ import { ProductData } from "./ProductData";
 import { PiShoppingCart } from "react-icons/pi";
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
+import Modal from "./Modal";
 
 function Product() {
     const [selectedImg, setSelectedImg] = useState(0);
     const [amount, setAmount] = useState(0);
+    const [showModal, setShowModal] = useState(false);
 
     return (
         <div className="grid grid-cols-12 lg:pt-8 ">
@@ -16,7 +18,8 @@ function Product() {
                     <img
                         src={ProductData[selectedImg].image}
                         alt="Main Image"
-                        className="lg:w-9/12 mx-auto lg:rounded-2xl border-2 border-zinc-200"
+                        onClickCapture={() => setShowModal(true)}
+                        className="lg:w-9/12 mx-auto lg:rounded-2xl border-2 border-zinc-200 cursor-pointer"
                     />
                     <ul className="xs:flex lg:hidden justify-between items-center text-white text-4xl [&>*]:cursor-pointer  ">
                         <li
@@ -64,8 +67,8 @@ function Product() {
                 </ul>
             </section>
             {/* Product Details */}
-            <article className="lg:col-span-4 col-span-12 lg:py-20 xs:p-6">
-                <h2 className="bg-zinc-200 p-1 xs:w-1/2 text-center   font-semibold xs:text-[0.7rem] text-xs rounded-md text-orange-500 uppercase inline-block">
+            <article className="col-span-12 lg:col-span-6 xl:col-span-5 lg:py-10 xs:p-6 md:p-10">
+                <h2 className="bg-zinc-200 p-1 xs:w-1/2 md:w-1/3 lg:w-2/3 xl:w-1/3 text-center   font-semibold xs:text-[0.7rem] text-xs rounded-md text-orange-500 uppercase inline-block">
                     Sneakers Company
                 </h2>
                 <h1 className="font-bold lg:text-4xl text-2xl lg:my-8 my-4">
@@ -76,7 +79,7 @@ function Product() {
                     Featuring a durable rubber outer sole, they’ll withstand everything the
                     weather can offer.
                 </p>
-                <div className="my-10 xs:flex justify-between items-center lg:block ">
+                <div className="my-10 xs:flex justify-between items-center xl:block ">
                     <div className="flex justify-start items-center gap-6">
                         <span className="font-extrabold text-2xl">$125.00</span>
                         <span className=" text-sm font-semibold p-1 bg-zinc-200 text-orange-500 rounded-md">
@@ -107,12 +110,19 @@ function Product() {
                             <CgMathPlus className="mx-auto" />
                         </li>
                     </ul>
-                    <button className="w-full flex justify-center items-center bg-orange-500 text-white h-14  text-lg  font-semibold gap-4 uppercase rounded-md">
+                    <button className="w-full flex justify-center items-center bg-orange-500 text-white h-14  text-base  font-semibold gap-4 uppercase rounded-md">
                         <PiShoppingCart className="text-2xl" />
                         <span>Add to Cart</span>
                     </button>
                 </div>
             </article>
+            {showModal ? (
+                <Modal
+                    selectedImg={selectedImg}
+                    setSelectedImg={setSelectedImg}
+                    setShowModal={setShowModal}
+                />
+            ) : null}
         </div>
     );
 }

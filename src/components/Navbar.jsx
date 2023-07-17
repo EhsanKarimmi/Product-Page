@@ -12,7 +12,7 @@ function Navbar() {
                 <h1 className="text-2xl font-Chakra font-extrabold uppercase cursor-pointer">
                     sneakers
                 </h1>
-                <nav className="hidden">
+                <nav className="hidden lg:block">
                     <ul className="flex justify-start items-center gap-5 font-medium text-base [&>*]:hover:cursor-pointer ">
                         <li className="hover:border-b-2 border-black transition-all duration-100">
                             Collections
