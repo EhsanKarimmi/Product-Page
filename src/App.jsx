@@ -4,7 +4,7 @@ import Product from "./components/Product";
 
 function App() {
     return (
-        <div className="mx-32 h-screen">
+        <div className="xl:mx-32 h-screen">
             <Navbar />
             <Product />
         </div>

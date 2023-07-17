@@ -1,16 +1,18 @@
 import React from "react";
 import { PiShoppingCart } from "react-icons/pi";
+import { GiHamburgerMenu } from "react-icons/gi";
 import avatar from "../assets/images/avatar.png";
 
 function Navbar() {
     return (
         <div className="flex justify-between items-center px-5 py-4 border-b-2 border-zinc-300">
             {/* Logo and links */}
-            <div className="flex justify-start items-center gap-10">
+            <div className="flex justify-start items-center lg:gap-10 xs:gap-3">
+                <GiHamburgerMenu className="visible text-2xl lg:hidden" />
                 <h1 className="text-2xl font-Chakra font-extrabold uppercase cursor-pointer">
                     sneakers
                 </h1>
-                <nav className="xs:hidden lg:visible">
+                <nav className="hidden">
                     <ul className="flex justify-start items-center gap-5 font-medium text-base [&>*]:hover:cursor-pointer ">
                         <li className="hover:border-b-2 border-black transition-all duration-100">
                             Collections
