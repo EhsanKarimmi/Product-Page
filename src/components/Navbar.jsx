@@ -18,6 +18,13 @@ function Navbar({ amount, setAmount }) {
                     onClick={() => setShowSidebar(true)}
                 />
                 {/* Mobile sidebar */}
+                {showSidebar ? (
+                    // Click around close sidebar.
+                    <main
+                        onClick={() => setShowSidebar(false)}
+                        className=" top-0 bottom-0 left-0 right-0 z-30 h-screen w-full fixed bg-transparent"
+                    ></main>
+                ) : null}
                 <div
                     className={`h-[100vh] w-1/2 bg-white z-50  top-0  px-5 py-6 xs:fixed lg:hidden shadow-md transition-all duration-200 ${
                         showSidebar ? ` left-0` : `-left-1/2`
