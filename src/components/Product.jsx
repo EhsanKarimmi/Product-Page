@@ -5,10 +5,10 @@ import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
 import Modal from "./Modal";
 
-function Product() {
+function Product({ setAmount }) {
     const [selectedImg, setSelectedImg] = useState(0);
-    const [amount, setAmount] = useState(0);
     const [showModal, setShowModal] = useState(false);
+    const [count, setCount] = useState(0);
 
     return (
         <div className="grid grid-cols-12 lg:pt-8 ">
@@ -94,23 +94,24 @@ function Product() {
                     <ul className="bg-zinc-200 flex justify-center items-center [&>*]:p-3   gap-1 p-1 rounded-md text-base font-semibold">
                         <li
                             onClick={() =>
-                                amount === 0
-                                    ? null
-                                    : setAmount((prevAmount) => prevAmount - 1)
+                                count === 0 ? null : setCount((prevAmount) => prevAmount - 1)
                             }
                             className="cursor-pointer rounded-md text-xl text-orange-500 hover:bg-zinc-300 transition-all duration-200 w-1/3"
                         >
                             <CgMathMinus className="mx-auto" />
                         </li>
-                        <li className="w-1/3 text-center">{amount}</li>
+                        <li className="w-1/3 text-center">{count}</li>
                         <li
-                            onClick={() => setAmount((prevAmount) => prevAmount + 1)}
+                            onClick={() => setCount((prevCount) => prevCount + 1)}
                             className="cursor-pointer rounded-md text-xl text-orange-500 hover:bg-zinc-300 transition-all duration-200 w-1/3"
                         >
                             <CgMathPlus className="mx-auto" />
                         </li>
                     </ul>
-                    <button className="w-full flex justify-center items-center bg-orange-500 text-white h-14  text-base  font-semibold gap-4 uppercase rounded-md">
+                    <button
+                        onClick={() => setAmount((prevAmount) => prevAmount + count)}
+                        className="w-full flex justify-center items-center bg-orange-500 text-white h-14  text-base  font-semibold gap-4 uppercase rounded-md"
+                    >
                         <PiShoppingCart className="text-2xl" />
                         <span>Add to Cart</span>
                     </button>
